@@ -1,16 +1,27 @@
 package com.rroggia.dungeonsanddragons.racas;
 
+import java.util.HashMap;
+
 import com.rroggia.dungeonsanddragons.Habilidades;
 
-public class Anao extends Raca {
+public final class Anao extends Raca {
 
-	public Anao() {
-		valoresDeHabilidades.put(Habilidades.CONSTITUICAO, Integer.valueOf(2));
+	public final static HashMap<Habilidades, Integer> habilidades = new HashMap<>();
+	public final static String ANAO = "Anão";
+
+	static {
+		habilidades.put(Habilidades.CONSTITUICAO, Integer.valueOf(2));
 	}
 
 	@Override
-	protected String getNomeDaRaca() {
-		return "Anão";
+	public String getNomeDaRaca() {
+		return ANAO;
+	}
+
+	@Override
+	protected HashMap<Habilidades, Integer> getValoresDeHabilidadesEspecificoDaRaca() {
+		return habilidades;
+
 	}
 
 }
