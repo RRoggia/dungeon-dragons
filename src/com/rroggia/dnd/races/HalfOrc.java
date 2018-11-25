@@ -2,28 +2,28 @@ package com.rroggia.dnd.races;
 
 import java.util.HashMap;
 
-import com.rroggia.dnd.Abilities;
+import com.rroggia.dnd.Ability;
 
 public class HalfOrc extends Race {
 
-	private final static HashMap<Abilities, Integer> abilities = new HashMap<>();
+	private final static HashMap<Ability, Integer> abilities = new HashMap<>();
 	public final static String HALF_ORC = "Half Orc";
 
 	static {
-		abilities.put(Abilities.STRENGTH, Integer.valueOf(2));
+		abilities.put(Ability.STRENGTH, Integer.valueOf(2));
 	}
 
-	public static HashMap<Abilities, Integer> getAbilities() {
+	public static HashMap<Ability, Integer> getAbilities() {
 		return abilities;
 	}
 
 	@Override
-	public String getRaceName() {
+	public String getName() {
 		return HALF_ORC;
 	}
 
 	@Override
-	protected HashMap<Abilities, Integer> getRacialAbilitiesScore() {
+	public HashMap<Ability, Integer> getAbilitiesScore() {
 		return abilities;
 	}
 

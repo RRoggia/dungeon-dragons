@@ -2,29 +2,29 @@ package com.rroggia.dnd.races;
 
 import java.util.HashMap;
 
-import com.rroggia.dnd.Abilities;
+import com.rroggia.dnd.Ability;
 
 public class Gnome extends Race {
 
-	private final static HashMap<Abilities, Integer> abilities = new HashMap<>();
+	private final static HashMap<Ability, Integer> abilitiesScore = new HashMap<>();
 	public final static String GNOME = "Gnome";
 
 	static {
-		abilities.put(Abilities.INTELLIGENCE, Integer.valueOf(2));
+		abilitiesScore.put(Ability.INTELLIGENCE, Integer.valueOf(2));
 	}
 
-	public static HashMap<Abilities, Integer> getAbilities() {
-		return abilities;
+	public static HashMap<Ability, Integer> getAbilities() {
+		return abilitiesScore;
 	}
 
 	@Override
-	public String getRaceName() {
+	public String getName() {
 		return GNOME;
 	}
 
 	@Override
-	protected HashMap<Abilities, Integer> getRacialAbilitiesScore() {
-		return abilities;
+	public HashMap<Ability, Integer> getAbilitiesScore() {
+		return abilitiesScore;
 	}
 
 }

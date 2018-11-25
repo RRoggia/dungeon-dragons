@@ -14,13 +14,13 @@ import com.rroggia.dnd.races.Human;
 public class Main {
 
 	public static void main(String[] args) {
-		List<Abilities> ordem = new ArrayList<Abilities>();
-		ordem.add(Abilities.STRENGTH);
-		ordem.add(Abilities.CONSTITUITION);
-		ordem.add(Abilities.INTELLIGENCE);
-		ordem.add(Abilities.DEXTERITY);
-		ordem.add(Abilities.CHARISMA);
-		ordem.add(Abilities.WISDOM);
+		List<Ability> ordem = new ArrayList<Ability>();
+		ordem.add(Ability.STRENGTH);
+		ordem.add(Ability.CONSTITUITION);
+		ordem.add(Ability.INTELLIGENCE);
+		ordem.add(Ability.DEXTERITY);
+		ordem.add(Ability.CHARISMA);
+		ordem.add(Ability.WISDOM);
 
 		Character reginaldo = new Character(new Elf(), new Standard(ordem));
 		reginaldo.setName("regi");
@@ -30,12 +30,12 @@ public class Main {
 		ConsoleWriter.printCharacterSheet(pedroHenrique);
 
 		Customized valoresPersonalizados = new Customized();
-		valoresPersonalizados.compraValorDeHabilidade(14, Abilities.STRENGTH);
-		valoresPersonalizados.compraValorDeHabilidade(14, Abilities.DEXTERITY);
-		valoresPersonalizados.compraValorDeHabilidade(14, Abilities.CHARISMA);
-		valoresPersonalizados.compraValorDeHabilidade(9, Abilities.CONSTITUITION);
-		valoresPersonalizados.compraValorDeHabilidade(9, Abilities.WISDOM);
-		valoresPersonalizados.compraValorDeHabilidade(9, Abilities.INTELLIGENCE);
+		valoresPersonalizados.compraValorDeHabilidade(14, Ability.STRENGTH);
+		valoresPersonalizados.compraValorDeHabilidade(14, Ability.DEXTERITY);
+		valoresPersonalizados.compraValorDeHabilidade(14, Ability.CHARISMA);
+		valoresPersonalizados.compraValorDeHabilidade(9, Ability.CONSTITUITION);
+		valoresPersonalizados.compraValorDeHabilidade(9, Ability.WISDOM);
+		valoresPersonalizados.compraValorDeHabilidade(9, Ability.INTELLIGENCE);
 
 		Character breno = new Character(new HalfElf(), valoresPersonalizados);
 		ConsoleWriter.printCharacterSheet(breno);

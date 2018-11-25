@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.rroggia.dnd.Abilities;
+import com.rroggia.dnd.Ability;
 
 public class Standard implements AbilityDeterminator {
-	private List<Abilities> descendentAbilities;
+	private List<Ability> descendentAbilities;
 	private static List<Integer> scores = new ArrayList<>();
 
 	static {
@@ -19,18 +19,18 @@ public class Standard implements AbilityDeterminator {
 		scores.add(8);
 	}
 
-	public Standard(List<Abilities> descendentAbilities) {
+	public Standard(List<Ability> descendentAbilities) {
 		this.descendentAbilities = descendentAbilities;
 	}
 
 	@Override
-	public void determineAbilityScore(Map<Abilities, Integer> abilitiesScore) {
+	public void determineAbilityScore(Map<Ability, Integer> abilitiesScore) {
 		if (descendentAbilities.size() != scores.size())
 			throw new IllegalArgumentException("Missing abilities.");
 
 		int index = 0;
 
-		for (Abilities ability : descendentAbilities) {
+		for (Ability ability : descendentAbilities) {
 			abilitiesScore.put(ability, scores.get(index));
 			index++;
 		}

@@ -17,7 +17,7 @@ public class Character {
 	private int experiencePoints;
 	private Dice hitDice;
 
-	private Map<Abilities, Integer> abilitiesScore = new HashMap<>();
+	private Map<Ability, Integer> abilitiesScore = new HashMap<>();
 	private int hitPointMaximum;
 
 	public Character(Race race, AbilityDeterminator abilities) {
@@ -27,27 +27,27 @@ public class Character {
 		this.setHitPointMaximum();
 	}
 
-	private void addRacialAbilitiesScore(HashMap<Abilities, Integer> racialAbilitiesScore) {
-		for (Entry<Abilities, Integer> racialAbility : racialAbilitiesScore.entrySet()) {
+	private void addRacialAbilitiesScore(HashMap<Ability, Integer> racialAbilitiesScore) {
+		for (Entry<Ability, Integer> racialAbility : racialAbilitiesScore.entrySet()) {
 			Integer characterScore = abilitiesScore.get(racialAbility.getKey());
 			abilitiesScore.put(racialAbility.getKey(), characterScore + racialAbility.getValue());
 		}
 	}
 
 	private void setHitPointMaximum() {
-		this.hitPointMaximum = Abilities.getAbilityModifier(abilitiesScore.get(Abilities.CONSTITUITION))
+		this.hitPointMaximum = Ability.getModifier(abilitiesScore.get(Ability.CONSTITUITION))
 				+ Dice.D6.getHigherResult();
 	}
 
 	public String getRaceName() {
-		return this.race.getRaceName();
+		return this.race.getName();
 	}
 
 	public int getHitPointMaximum() {
 		return this.hitPointMaximum;
 	}
 
-	public Map<Abilities, Integer> getAbilitiesScore() {
+	public Map<Ability, Integer> getAbilitiesScore() {
 		return abilitiesScore;
 	}
 

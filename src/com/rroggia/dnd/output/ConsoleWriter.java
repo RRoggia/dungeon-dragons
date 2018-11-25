@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.rroggia.dnd.Abilities;
+import com.rroggia.dnd.Ability;
 import com.rroggia.dnd.Character;
 import com.rroggia.dnd.races.Dragonborn;
 import com.rroggia.dnd.races.Dwarf;
@@ -39,22 +39,22 @@ public class ConsoleWriter {
 
 	}
 
-	private static void printCharacterAbilitiesScoreAndModifiers(Map<Abilities, Integer> abilitiesScore) {
+	private static void printCharacterAbilitiesScoreAndModifiers(Map<Ability, Integer> abilitiesScore) {
 		System.out.println("Abilities:");
 		System.out.println("-----");
-		for (Entry<Abilities, Integer> entry : abilitiesScore.entrySet()) {
+		for (Entry<Ability, Integer> entry : abilitiesScore.entrySet()) {
 			System.out.println("Ability: " + entry.getKey().toString());
 			System.out.println("Score: " + entry.getValue());
-			System.out.println("Modifier: " + Abilities.getAbilityModifier(entry.getValue()));
+			System.out.println("Modifier: " + Ability.getModifier(entry.getValue()));
 		}
 		System.out.println();
 	}
 
-	private static void printAbilityScore(HashMap<Abilities, Integer> valoresDeHabilidades, String nomeDaClasse) {
+	private static void printAbilityScore(HashMap<Ability, Integer> valoresDeHabilidades, String nomeDaClasse) {
 
 		System.out.println(nomeDaClasse + " Racial Abilities:");
 		System.out.println("-----");
-		for (Entry<Abilities, Integer> entrada : valoresDeHabilidades.entrySet()) {
+		for (Entry<Ability, Integer> entrada : valoresDeHabilidades.entrySet()) {
 			System.out.println("Ability: " + entrada.getKey().toString());
 			System.out.println("Score: " + entrada.getValue());
 		}
