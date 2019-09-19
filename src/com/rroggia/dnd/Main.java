@@ -7,9 +7,7 @@ import com.rroggia.dnd.abilityscore.Customized;
 import com.rroggia.dnd.abilityscore.Random;
 import com.rroggia.dnd.abilityscore.Standard;
 import com.rroggia.dnd.output.ConsoleWriter;
-import com.rroggia.dnd.races.Elf;
-import com.rroggia.dnd.races.HalfElf;
-import com.rroggia.dnd.races.Human;
+import com.rroggia.dnd.races.Dwarf;
 
 public class Main {
 
@@ -22,11 +20,11 @@ public class Main {
 		ordem.add(Ability.CHARISMA);
 		ordem.add(Ability.WISDOM);
 
-		Character reginaldo = new Character(new Elf(), new Standard(ordem));
+		Character reginaldo = new Character(new Dwarf(), new Standard(ordem));
 		reginaldo.setName("regi");
 		ConsoleWriter.printCharacterSheet(reginaldo);
 
-		Character pedroHenrique = new Character(new Human(), new Random());
+		Character pedroHenrique = new Character(new Dwarf(), new Random());
 		ConsoleWriter.printCharacterSheet(pedroHenrique);
 
 		Customized valoresPersonalizados = new Customized();
@@ -37,7 +35,7 @@ public class Main {
 		valoresPersonalizados.compraValorDeHabilidade(9, Ability.WISDOM);
 		valoresPersonalizados.compraValorDeHabilidade(9, Ability.INTELLIGENCE);
 
-		Character breno = new Character(new HalfElf(), valoresPersonalizados);
+		Character breno = new Character(new Dwarf(), valoresPersonalizados);
 		ConsoleWriter.printCharacterSheet(breno);
 
 		ConsoleWriter.printAbilityScoreSummaryOfAllRaces();

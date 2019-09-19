@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import com.rroggia.dnd.Ability;
 
-public class Halfling extends Race {
+public class Halfling {
 
 	private final static HashMap<Ability, Integer> abilities = new HashMap<>();
 	public final static String HALFLING = "Halfling";
@@ -17,12 +17,10 @@ public class Halfling extends Race {
 		return abilities;
 	}
 
-	@Override
 	public String getName() {
 		return HALFLING;
 	}
 
-	@Override
 	public HashMap<Ability, Integer> getAbilitiesScore() {
 		return abilities;
 	}

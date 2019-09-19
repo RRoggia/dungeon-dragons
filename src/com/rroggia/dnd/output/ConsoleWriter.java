@@ -7,7 +7,6 @@ import java.util.Map.Entry;
 import com.rroggia.dnd.Ability;
 import com.rroggia.dnd.Character;
 import com.rroggia.dnd.races.Dragonborn;
-import com.rroggia.dnd.races.Dwarf;
 import com.rroggia.dnd.races.Elf;
 import com.rroggia.dnd.races.Gnome;
 import com.rroggia.dnd.races.HalfElf;
@@ -19,7 +18,7 @@ import com.rroggia.dnd.races.Tiefling;
 public class ConsoleWriter {
 
 	public static void printAbilityScoreSummaryOfAllRaces() {
-		printAbilityScore(Dwarf.getAbilities(), Dwarf.DWARF);
+		
 		printAbilityScore(Dragonborn.getAbilities(), Dragonborn.DRAGONBORN);
 		printAbilityScore(Elf.getAbilities(), Elf.ELF);
 		printAbilityScore(Gnome.getAbilities(), Gnome.GNOME);

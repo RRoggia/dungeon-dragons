@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import com.rroggia.dnd.Ability;
 
-public class Gnome extends Race {
+public class Gnome {
 
 	private final static HashMap<Ability, Integer> abilitiesScore = new HashMap<>();
 	public final static String GNOME = "Gnome";
@@ -17,12 +17,10 @@ public class Gnome extends Race {
 		return abilitiesScore;
 	}
 
-	@Override
 	public String getName() {
 		return GNOME;
 	}
 
-	@Override
 	public HashMap<Ability, Integer> getAbilitiesScore() {
 		return abilitiesScore;
 	}
