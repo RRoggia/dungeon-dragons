@@ -1,7 +1,7 @@
 package com.rroggia.dnd.races;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.rroggia.dnd.Ability;
 import com.rroggia.dnd.Alignment;
@@ -17,7 +17,7 @@ public abstract class Race {
 
 	public abstract List<String> getFemaleNames();
 
-	public abstract HashMap<Ability, Integer> getAbilitiesScore();
+	public abstract Map<Ability, Integer> getAbilitiesScore();
 
 	public abstract int getAdultAge();
 

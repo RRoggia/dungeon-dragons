@@ -27,7 +27,7 @@ public class Character {
 		this.setHitPointMaximum();
 	}
 
-	private void addRacialAbilitiesScore(HashMap<Ability, Integer> racialAbilitiesScore) {
+	private void addRacialAbilitiesScore(Map<Ability, Integer> racialAbilitiesScore) {
 		for (Entry<Ability, Integer> racialAbility : racialAbilitiesScore.entrySet()) {
 			Integer characterScore = abilitiesScore.get(racialAbility.getKey());
 			abilitiesScore.put(racialAbility.getKey(), characterScore + racialAbility.getValue());
