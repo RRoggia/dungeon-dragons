@@ -8,22 +8,12 @@ import com.rroggia.dnd.Ability;
 
 public class Customized implements AbilityDeterminator {
 
-	private static Map<Integer, Integer> abilitiesScorePointCoint = new HashMap<>();
+	private static Map<Integer, Integer> abilitiesScorePointCoint = Map.of(8, 0, 9, 1, 10, 2, 11, 3, 12, 4, 13, 5, 14,
+			7, 15, 9);
 	private Map<Ability, Integer> scoresPurchased = new HashMap<>();
 	private int pointsToSpend = 27;
 
-	static {
-		abilitiesScorePointCoint.put(8, 0);
-		abilitiesScorePointCoint.put(9, 1);
-		abilitiesScorePointCoint.put(10, 2);
-		abilitiesScorePointCoint.put(11, 3);
-		abilitiesScorePointCoint.put(12, 4);
-		abilitiesScorePointCoint.put(13, 5);
-		abilitiesScorePointCoint.put(14, 7);
-		abilitiesScorePointCoint.put(15, 9);
-	}
-
-	public void compraValorDeHabilidade(int abilityScore, Ability ability) {
+	public void purchaseAbilityScore(int abilityScore, Ability ability) {
 		if (abilityScore < 8 || abilityScore > 15)
 			throw new IllegalArgumentException("Ability Score is not valid. Too high or too low.");
 
@@ -47,7 +37,7 @@ public class Customized implements AbilityDeterminator {
 		}
 	}
 
-	public static void imprimeValoresECustosDeHabilidades() {
+	public static void printAbilityScoreAndCost() {
 		System.out.println("Customized Ability Score:");
 		System.out.println("-----");
 		for (Entry<Integer, Integer> scoreCost : abilitiesScorePointCoint.entrySet()) {

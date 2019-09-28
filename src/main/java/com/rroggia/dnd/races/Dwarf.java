@@ -12,6 +12,8 @@ import com.rroggia.dnd.Speed;
 
 public final class Dwarf extends Race {
 
+	private final static Dwarf INSTANCE = new Dwarf();
+
 	public final static String DWARF = "Dwarf";
 
 	private final static Map<Ability, Integer> ABILITIES_SCORE = Map.of(Ability.CONSTITUITION, Integer.valueOf(2));
@@ -40,6 +42,14 @@ public final class Dwarf extends Race {
 	private final static List<String> CLAN_NAMES = List.of("Balderk", "Battlehammer", "Brawnanvil", "Dankil",
 			"Fireforge", "Frostbeard", "Gorunn", "Holderhek", "Ironfist", "Lorderr", "Lutgehr", "Rumnaheim", "Strakeln",
 			"Torunn", "Ungart");
+
+	public static Dwarf getInstance() {
+		return INSTANCE;
+	}
+
+	private Dwarf() {
+
+	}
 
 	@Override
 	public String getName() {

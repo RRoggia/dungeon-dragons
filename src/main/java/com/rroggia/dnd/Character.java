@@ -12,13 +12,18 @@ public class Character {
 
 	private String name;
 	private Race race;
-	private CharClass charClass;
-	private int level;
+	private Map<CharClass, Integer> classesAndLevel;
+	private Alignment alignment;
 	private int experiencePoints;
-	private Dice hitDice;
-
-	private Map<Ability, Integer> abilitiesScore = new HashMap<>();
 	private int hitPointMaximum;
+	private Dice hitDice;
+	private Map<Ability, Integer> abilitiesScore = new HashMap<>();
+	private Integer proficiencyBonus;
+	private Map<Ability, Integer> savingThrow;
+	private Map<Skill, Integer> skills;
+	private Integer armorClass;
+	private Integer initiative;
+	private Speed speed;
 
 	public Character(Race race, AbilityDeterminator abilities) {
 		this.race = race;

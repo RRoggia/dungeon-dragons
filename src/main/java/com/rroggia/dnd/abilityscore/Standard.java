@@ -1,6 +1,5 @@
 package com.rroggia.dnd.abilityscore;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -8,16 +7,7 @@ import com.rroggia.dnd.Ability;
 
 public class Standard implements AbilityDeterminator {
 	private List<Ability> descendentAbilities;
-	private static List<Integer> scores = new ArrayList<>();
-
-	static {
-		scores.add(15);
-		scores.add(14);
-		scores.add(13);
-		scores.add(12);
-		scores.add(10);
-		scores.add(8);
-	}
+	private static List<Integer> scores = List.of(15, 14, 13, 12, 10, 8);
 
 	public Standard(List<Ability> descendentAbilities) {
 		this.descendentAbilities = descendentAbilities;

@@ -20,22 +20,22 @@ public class Main {
 		ordem.add(Ability.CHARISMA);
 		ordem.add(Ability.WISDOM);
 
-		Character reginaldo = new Character(new Dwarf(), new Standard(ordem));
+		Character reginaldo = new Character(Dwarf.getInstance(), new Standard(ordem));
 		reginaldo.setName("regi");
 		ConsoleWriter.printCharacterSheet(reginaldo);
 
-		Character pedroHenrique = new Character(new Dwarf(), new Random());
+		Character pedroHenrique = new Character(Dwarf.getInstance(), new Random());
 		ConsoleWriter.printCharacterSheet(pedroHenrique);
 
 		Customized valoresPersonalizados = new Customized();
-		valoresPersonalizados.compraValorDeHabilidade(14, Ability.STRENGTH);
-		valoresPersonalizados.compraValorDeHabilidade(14, Ability.DEXTERITY);
-		valoresPersonalizados.compraValorDeHabilidade(14, Ability.CHARISMA);
-		valoresPersonalizados.compraValorDeHabilidade(9, Ability.CONSTITUITION);
-		valoresPersonalizados.compraValorDeHabilidade(9, Ability.WISDOM);
-		valoresPersonalizados.compraValorDeHabilidade(9, Ability.INTELLIGENCE);
+		valoresPersonalizados.purchaseAbilityScore(14, Ability.STRENGTH);
+		valoresPersonalizados.purchaseAbilityScore(14, Ability.DEXTERITY);
+		valoresPersonalizados.purchaseAbilityScore(14, Ability.CHARISMA);
+		valoresPersonalizados.purchaseAbilityScore(9, Ability.CONSTITUITION);
+		valoresPersonalizados.purchaseAbilityScore(9, Ability.WISDOM);
+		valoresPersonalizados.purchaseAbilityScore(9, Ability.INTELLIGENCE);
 
-		Character breno = new Character(new Dwarf(), valoresPersonalizados);
+		Character breno = new Character(Dwarf.getInstance(), valoresPersonalizados);
 		ConsoleWriter.printCharacterSheet(breno);
 
 		ConsoleWriter.printAbilityScoreSummaryOfAllRaces();
