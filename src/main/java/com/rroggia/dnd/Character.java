@@ -36,10 +36,10 @@ public class Character {
 	}
 
 	private void determineSavingThrows() {
-		for (var abilityAndModifier : this.abilitiesScore.entrySet()) {
-			Ability ability = abilityAndModifier.getKey();
-			Integer modifier = abilityAndModifier.getValue();
-			savingThrow.put(ability, modifier + proficiencyBonus);
+		for (var abilityAndScore : this.abilitiesScore.entrySet()) {
+			Ability ability = abilityAndScore.getKey();
+			Integer score = abilityAndScore.getValue();
+			savingThrow.put(ability, Ability.getModifier(score) + proficiencyBonus);
 		}
 	}
 

@@ -59,14 +59,20 @@ public class ConsoleWriter {
 	private static void printCharacterSavingThrowsAndModifiers(Map<Ability, Integer> savingThrows) {
 		System.out.println("Saving Throws");
 		System.out.println("-----");
-		printAbilityAndModifier(savingThrows);
+		printAbilityAndSavingThrow(savingThrows);
+	}
+
+	private static void printAbilityAndSavingThrow(Map<Ability, Integer> abilitiesScore) {
+		for (Entry<Ability, Integer> entry : abilitiesScore.entrySet()) {
+			System.out.println(entry.getKey().toString() + " " + entry.getValue());
+		}
+		System.out.println();
 	}
 
 	private static void printAbilityAndModifier(Map<Ability, Integer> abilitiesScore) {
 		for (Entry<Ability, Integer> entry : abilitiesScore.entrySet()) {
-			System.out.println("Ability: " + entry.getKey().toString());
-			System.out.println("Score: " + entry.getValue());
-			System.out.println("Modifier: " + Ability.getModifier(entry.getValue()));
+			System.out.println(entry.getKey().toString() + " " + entry.getValue() + " ("
+					+ Ability.getModifier(entry.getValue()) + ")");
 		}
 		System.out.println();
 	}
