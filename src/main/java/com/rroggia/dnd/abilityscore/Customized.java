@@ -27,7 +27,8 @@ public class Customized implements AbilityDeterminator {
 	}
 
 	@Override
-	public void determineAbilityScore(Map<Ability, Integer> abilitiesScore) {
+	public Map<Ability, Integer> determineAbilityScore() {
+		var abilitiesScore = new HashMap<Ability, Integer>();
 		for (Ability ability : Ability.values()) {
 			int abilityScore = 8;
 			if (scoresPurchased.containsKey(ability))
@@ -35,6 +36,7 @@ public class Customized implements AbilityDeterminator {
 
 			abilitiesScore.put(ability, abilityScore);
 		}
+		return abilitiesScore;
 	}
 
 	public static void printAbilityScoreAndCost() {

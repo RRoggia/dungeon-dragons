@@ -1,5 +1,6 @@
 package com.rroggia.dnd.abilityscore;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import com.rroggia.dnd.Ability;
@@ -8,7 +9,8 @@ import com.rroggia.dnd.Dice;
 public class Random implements AbilityDeterminator {
 
 	@Override
-	public void determineAbilityScore(Map<Ability, Integer> abilitiesScore) {
+	public Map<Ability, Integer> determineAbilityScore() {
+		var abilitiesScore = new HashMap<Ability, Integer>();
 		for (Ability ability : Ability.values()) {
 			int first = 0;
 			int second = 0;
@@ -35,5 +37,6 @@ public class Random implements AbilityDeterminator {
 			}
 			abilitiesScore.put(ability, first + second + third);
 		}
+		return abilitiesScore;
 	}
 }

@@ -1,5 +1,6 @@
 package com.rroggia.dnd.abilityscore;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +15,8 @@ public class Standard implements AbilityDeterminator {
 	}
 
 	@Override
-	public void determineAbilityScore(Map<Ability, Integer> abilitiesScore) {
+	public Map<Ability, Integer> determineAbilityScore() {
+		var abilitiesScore = new HashMap<Ability, Integer>();
 		if (descendentAbilities.size() != scores.size())
 			throw new IllegalArgumentException("Missing abilities.");
 
@@ -24,7 +26,7 @@ public class Standard implements AbilityDeterminator {
 			abilitiesScore.put(ability, scores.get(index));
 			index++;
 		}
-
+		return abilitiesScore;
 	}
 
 }

@@ -7,6 +7,6 @@ import com.rroggia.dnd.Ability;
 @FunctionalInterface
 public interface AbilityDeterminator {
 
-	public void determineAbilityScore(Map<Ability, Integer> valoresDeHabilidades);
+	public Map<Ability, Integer> determineAbilityScore();
 
 }

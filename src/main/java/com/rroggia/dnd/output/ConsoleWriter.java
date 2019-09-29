@@ -18,7 +18,7 @@ import com.rroggia.dnd.races.Tiefling;
 public class ConsoleWriter {
 
 	public static void printAbilityScoreSummaryOfAllRaces() {
-		
+
 		printAbilityScore(Dragonborn.getAbilities(), Dragonborn.DRAGONBORN);
 		printAbilityScore(Elf.getAbilities(), Elf.ELF);
 		printAbilityScore(Gnome.getAbilities(), Gnome.GNOME);
@@ -31,16 +31,38 @@ public class ConsoleWriter {
 
 	public static void printCharacterSheet(Character character) {
 		System.out.println("Name: " + (character.getName() == null ? "" : character.getName()));
+
+		System.out.println("Classes and Level:");
+		if (character.getClassesAndLevel() != null) {
+			for (var classLevel : character.getClassesAndLevel().entrySet()) {
+				var charClass = classLevel.getKey();
+				var level = classLevel.getValue();
+				System.out.println(charClass + " " + level);
+			}
+		} else {
+			System.out.println("No class specified.");
+		}
 		System.out.println("Race: " + character.getRaceName());
 		System.out.println("Hit Point Maximum: " + character.getHitPointMaximum());
 
 		printCharacterAbilitiesScoreAndModifiers(character.getAbilitiesScore());
+		printCharacterSavingThrowsAndModifiers(character.getSavingThrow());
 
 	}
 
 	private static void printCharacterAbilitiesScoreAndModifiers(Map<Ability, Integer> abilitiesScore) {
 		System.out.println("Abilities:");
 		System.out.println("-----");
+		printAbilityAndModifier(abilitiesScore);
+	}
+
+	private static void printCharacterSavingThrowsAndModifiers(Map<Ability, Integer> savingThrows) {
+		System.out.println("Saving Throws");
+		System.out.println("-----");
+		printAbilityAndModifier(savingThrows);
+	}
+
+	private static void printAbilityAndModifier(Map<Ability, Integer> abilitiesScore) {
 		for (Entry<Ability, Integer> entry : abilitiesScore.entrySet()) {
 			System.out.println("Ability: " + entry.getKey().toString());
 			System.out.println("Score: " + entry.getValue());
