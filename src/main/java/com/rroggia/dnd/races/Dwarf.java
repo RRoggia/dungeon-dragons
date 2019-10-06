@@ -6,9 +6,9 @@ import java.util.Map;
 import com.rroggia.dnd.Ability;
 import com.rroggia.dnd.Alignment;
 import com.rroggia.dnd.CreatureSize;
-import com.rroggia.dnd.Language;
 import com.rroggia.dnd.MeasuremementUnit;
 import com.rroggia.dnd.Speed;
+import com.rroggia.dnd.proficiency.Language;
 
 public final class Dwarf extends Race {
 

@@ -1,4 +1,4 @@
-package com.rroggia.dnd;
+package com.rroggia.dnd.proficiency;
 
 import java.util.Objects;
 

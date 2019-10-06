@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 
 import com.rroggia.dnd.abilityscore.AbilityDeterminator;
 import com.rroggia.dnd.classes.CharClass;
+import com.rroggia.dnd.proficiency.Skill;
 import com.rroggia.dnd.races.Race;
 
 public class Character {
