@@ -12,4 +12,14 @@ public final class Barbarian extends CharacterClass {
 	private static final Set<ArmorProficiency> ARMOR_PROFICIENCIES = Set.of(ArmorProficiency.LIGHT,
 			ArmorProficiency.MEDIUM, ArmorProficiency.SHIELD);
 
+	@Override
+	public Dice getHitDice() {
+		return HIT_DICE;
+	}
+
+	@Override
+	public Set<ArmorProficiency> getArmorProficiencies() {
+		return ARMOR_PROFICIENCIES;
+	}
+
 }
