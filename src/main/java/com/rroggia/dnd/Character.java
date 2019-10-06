@@ -5,7 +5,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.rroggia.dnd.abilityscore.AbilityDeterminator;
-import com.rroggia.dnd.classes.CharClass;
+import com.rroggia.dnd.classes.CharacterClass;
+import com.rroggia.dnd.proficiency.ProficiencyBonusCalculator;
 import com.rroggia.dnd.proficiency.Skill;
 import com.rroggia.dnd.races.Race;
 
@@ -13,7 +14,7 @@ public class Character {
 
 	private String name;
 	private Race race;
-	private Map<CharClass, Integer> classesAndLevel;
+	private Map<CharacterClass, Integer> classesAndLevel;
 	private Alignment alignment;
 	private int experiencePoints;
 	private int hitPointMaximum;
@@ -26,14 +27,81 @@ public class Character {
 	private Integer initiative;
 	private Speed speed;
 
-	public Character(Race race, AbilityDeterminator abilities) {
+	public Character(Race race, CharacterClass characterClass, AbilityDeterminator abilities) {
 		this.race = race;
 		this.speed = race.getSpeed();
 		this.abilitiesScore = abilities.determineAbilityScore();
 		this.addRacialAbilitiesScore(this.race.getAbilitiesScore());
 		this.determineSavingThrows();
 
-		this.setHitPointMaximum();
+		this.hitDice = characterClass.getHitDice();
+		this.hitPointMaximum = hitDice.getHigherResult()
+				+ Ability.getModifier(abilitiesScore.get(Ability.CONSTITUITION));
+
+		classesAndLevel = Map.of(characterClass, 1);
+
+		proficiencyBonus = ProficiencyBonusCalculator.calculateProfiencyBonusForLevel(1);
+
+	}
+
+	public String getRaceName() {
+		return this.race.getName();
+	}
+
+	public int getHitPointMaximum() {
+		return this.hitPointMaximum;
+	}
+
+	public Map<Ability, Integer> getAbilitiesScore() {
+		return abilitiesScore;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public Race getRace() {
+		return race;
+	}
+
+	public Map<CharacterClass, Integer> getClassesAndLevel() {
+		return classesAndLevel;
+	}
+
+	public Alignment getAlignment() {
+		return alignment;
+	}
+
+	public int getExperiencePoints() {
+		return experiencePoints;
+	}
+
+	public Integer getProficiencyBonus() {
+		return proficiencyBonus;
+	}
+
+	public Map<Ability, Integer> getSavingThrow() {
+		return savingThrow;
+	}
+
+	public Map<Skill, Integer> getSkills() {
+		return skills;
+	}
+
+	public Integer getArmorClass() {
+		return armorClass;
+	}
+
+	public Integer getInitiative() {
+		return initiative;
+	}
+
+	public Speed getSpeed() {
+		return speed;
 	}
 
 	private void determineSavingThrows() {
@@ -49,127 +117,6 @@ public class Character {
 			Integer characterScore = abilitiesScore.get(racialAbility.getKey());
 			abilitiesScore.put(racialAbility.getKey(), characterScore + racialAbility.getValue());
 		}
-	}
-
-	private void setHitPointMaximum() {
-		this.hitPointMaximum = Ability.getModifier(abilitiesScore.get(Ability.CONSTITUITION))
-				+ Dice.D6.getHigherResult();
-	}
-
-	public String getRaceName() {
-		return this.race.getName();
-	}
-
-	public int getHitPointMaximum() {
-		return this.hitPointMaximum;
-	}
-
-	public Map<Ability, Integer> getAbilitiesScore() {
-		return abilitiesScore;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Race getRace() {
-		return race;
-	}
-
-	public void setRace(Race race) {
-		this.race = race;
-	}
-
-	public Map<CharClass, Integer> getClassesAndLevel() {
-		return classesAndLevel;
-	}
-
-	public void setClassesAndLevel(Map<CharClass, Integer> classesAndLevel) {
-		this.classesAndLevel = classesAndLevel;
-	}
-
-	public Alignment getAlignment() {
-		return alignment;
-	}
-
-	public void setAlignment(Alignment alignment) {
-		this.alignment = alignment;
-	}
-
-	public int getExperiencePoints() {
-		return experiencePoints;
-	}
-
-	public void setExperiencePoints(int experiencePoints) {
-		this.experiencePoints = experiencePoints;
-	}
-
-	public Dice getHitDice() {
-		return hitDice;
-	}
-
-	public void setHitDice(Dice hitDice) {
-		this.hitDice = hitDice;
-	}
-
-	public Integer getProficiencyBonus() {
-		return proficiencyBonus;
-	}
-
-	public void setProficiencyBonus(Integer proficiencyBonus) {
-		this.proficiencyBonus = proficiencyBonus;
-	}
-
-	public Map<Ability, Integer> getSavingThrow() {
-		return savingThrow;
-	}
-
-	public void setSavingThrow(Map<Ability, Integer> savingThrow) {
-		this.savingThrow = savingThrow;
-	}
-
-	public Map<Skill, Integer> getSkills() {
-		return skills;
-	}
-
-	public void setSkills(Map<Skill, Integer> skills) {
-		this.skills = skills;
-	}
-
-	public Integer getArmorClass() {
-		return armorClass;
-	}
-
-	public void setArmorClass(Integer armorClass) {
-		this.armorClass = armorClass;
-	}
-
-	public Integer getInitiative() {
-		return initiative;
-	}
-
-	public void setInitiative(Integer initiative) {
-		this.initiative = initiative;
-	}
-
-	public Speed getSpeed() {
-		return speed;
-	}
-
-	public void setSpeed(Speed speed) {
-		this.speed = speed;
-	}
-
-	public void setHitPointMaximum(int hitPointMaximum) {
-		this.hitPointMaximum = hitPointMaximum;
-	}
-
-	public void setAbilitiesScore(Map<Ability, Integer> abilitiesScore) {
-		this.abilitiesScore = abilitiesScore;
 	}
 
 }

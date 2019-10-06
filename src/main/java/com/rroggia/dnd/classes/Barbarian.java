@@ -7,10 +7,20 @@ import com.rroggia.dnd.proficiency.ArmorProficiency;
 
 public final class Barbarian extends CharacterClass {
 
+	private static final Barbarian INSTANCE = new Barbarian();
+
 	private static final Dice HIT_DICE = Dice.D12;
 
 	private static final Set<ArmorProficiency> ARMOR_PROFICIENCIES = Set.of(ArmorProficiency.LIGHT,
 			ArmorProficiency.MEDIUM, ArmorProficiency.SHIELD);
+
+	private Barbarian() {
+
+	}
+
+	public static Barbarian getInstance() {
+		return INSTANCE;
+	}
 
 	@Override
 	public Dice getHitDice() {
@@ -20,6 +30,11 @@ public final class Barbarian extends CharacterClass {
 	@Override
 	public Set<ArmorProficiency> getArmorProficiencies() {
 		return ARMOR_PROFICIENCIES;
+	}
+
+	@Override
+	public String toString() {
+		return CharClass.BARBARIAN.toString();
 	}
 
 }

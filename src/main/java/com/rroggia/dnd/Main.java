@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.rroggia.dnd.abilityscore.Standard;
+import com.rroggia.dnd.classes.Barbarian;
 import com.rroggia.dnd.output.ConsoleWriter;
 import com.rroggia.dnd.races.Dwarf;
 
@@ -18,7 +19,7 @@ public class Main {
 		ordem.add(Ability.CHARISMA);
 		ordem.add(Ability.WISDOM);
 
-		Character reginaldo = new Character(Dwarf.getInstance(), new Standard(ordem));
+		Character reginaldo = new Character(Dwarf.getInstance(), Barbarian.getInstance(), new Standard(ordem));
 		reginaldo.setName("regi");
 		ConsoleWriter.printCharacterSheet(reginaldo);
 
