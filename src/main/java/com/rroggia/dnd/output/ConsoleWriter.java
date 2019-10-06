@@ -31,6 +31,7 @@ public class ConsoleWriter {
 
 	public static void printCharacterSheet(Character character) {
 		System.out.println("Name: " + (character.getName() == null ? "" : character.getName()));
+		System.out.println("Race: " + character.getRaceName());
 
 		System.out.println("Classes and Level:");
 		if (character.getClassesAndLevel() != null) {
@@ -42,7 +43,8 @@ public class ConsoleWriter {
 		} else {
 			System.out.println("No class specified.");
 		}
-		System.out.println("Race: " + character.getRaceName());
+		System.out.println("Proficiency Bonus: " + character.getProficiencyBonus());
+
 		System.out.println("Hit Point Maximum: " + character.getHitPointMaximum());
 
 		printCharacterAbilitiesScoreAndModifiers(character.getAbilitiesScore());
