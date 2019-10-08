@@ -4,6 +4,7 @@ import java.util.Set;
 
 import com.rroggia.dnd.Dice;
 import com.rroggia.dnd.proficiency.ArmorProficiency;
+import com.rroggia.dnd.proficiency.SavingThrowProficiency;
 
 public final class Barbarian extends CharacterClass {
 
@@ -13,6 +14,9 @@ public final class Barbarian extends CharacterClass {
 
 	private static final Set<ArmorProficiency> ARMOR_PROFICIENCIES = Set.of(ArmorProficiency.LIGHT,
 			ArmorProficiency.MEDIUM, ArmorProficiency.SHIELD);
+
+	private static final Set<SavingThrowProficiency> SAVING_THROW_PROFICIENCIES = Set
+			.of(SavingThrowProficiency.STRENGTH, SavingThrowProficiency.CONSTITUITION);
 
 	private Barbarian() {
 
@@ -30,6 +34,11 @@ public final class Barbarian extends CharacterClass {
 	@Override
 	public Set<ArmorProficiency> getArmorProficiencies() {
 		return ARMOR_PROFICIENCIES;
+	}
+	
+	@Override
+	public Set<SavingThrowProficiency> getSavingThrowProficiencies() {
+		return SAVING_THROW_PROFICIENCIES;
 	}
 
 	@Override

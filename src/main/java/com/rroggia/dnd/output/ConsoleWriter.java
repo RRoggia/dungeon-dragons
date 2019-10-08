@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 
 import com.rroggia.dnd.Ability;
 import com.rroggia.dnd.Character;
+import com.rroggia.dnd.proficiency.SavingThrowProficiency;
 import com.rroggia.dnd.races.Dragonborn;
 import com.rroggia.dnd.races.Elf;
 import com.rroggia.dnd.races.Gnome;
@@ -58,14 +59,14 @@ public class ConsoleWriter {
 		printAbilityAndModifier(abilitiesScore);
 	}
 
-	private static void printCharacterSavingThrowsAndModifiers(Map<Ability, Integer> savingThrows) {
+	private static void printCharacterSavingThrowsAndModifiers(Map<SavingThrowProficiency, Integer> savingThrows) {
 		System.out.println("Saving Throws");
 		System.out.println("-----");
 		printAbilityAndSavingThrow(savingThrows);
 	}
 
-	private static void printAbilityAndSavingThrow(Map<Ability, Integer> abilitiesScore) {
-		for (Entry<Ability, Integer> entry : abilitiesScore.entrySet()) {
+	private static void printAbilityAndSavingThrow(Map<SavingThrowProficiency, Integer> abilitiesScore) {
+		for (Entry<SavingThrowProficiency, Integer> entry : abilitiesScore.entrySet()) {
 			System.out.println(entry.getKey().toString() + " " + entry.getValue());
 		}
 		System.out.println();

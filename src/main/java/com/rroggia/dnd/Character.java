@@ -3,10 +3,12 @@ package com.rroggia.dnd;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import com.rroggia.dnd.abilityscore.AbilityDeterminator;
 import com.rroggia.dnd.classes.CharacterClass;
 import com.rroggia.dnd.proficiency.ProficiencyBonusCalculator;
+import com.rroggia.dnd.proficiency.SavingThrowProficiency;
 import com.rroggia.dnd.proficiency.Skill;
 import com.rroggia.dnd.races.Race;
 
@@ -21,18 +23,18 @@ public class Character {
 	private Dice hitDice;
 	private Map<Ability, Integer> abilitiesScore = new HashMap<>();
 	private Integer proficiencyBonus = 0;
-	private Map<Ability, Integer> savingThrow = new HashMap<>();
+	private Map<SavingThrowProficiency, Integer> savingThrow = new HashMap<>();
 	private Map<Skill, Integer> skills;
 	private Integer armorClass;
 	private Integer initiative;
 	private Speed speed;
+	private CharacterClass characterClass;
 
 	public Character(Race race, CharacterClass characterClass, AbilityDeterminator abilities) {
 		this.race = race;
 		this.speed = race.getSpeed();
 		this.abilitiesScore = abilities.determineAbilityScore();
 		this.addRacialAbilitiesScore(this.race.getAbilitiesScore());
-		this.determineSavingThrows();
 
 		this.hitDice = characterClass.getHitDice();
 		this.hitPointMaximum = hitDice.getHigherResult()
@@ -41,6 +43,8 @@ public class Character {
 		classesAndLevel = Map.of(characterClass, 1);
 
 		proficiencyBonus = ProficiencyBonusCalculator.calculateProfiencyBonusForLevel(1);
+		this.characterClass = characterClass;
+		this.determineSavingThrows();
 
 	}
 
@@ -84,7 +88,7 @@ public class Character {
 		return proficiencyBonus;
 	}
 
-	public Map<Ability, Integer> getSavingThrow() {
+	public Map<SavingThrowProficiency, Integer> getSavingThrow() {
 		return savingThrow;
 	}
 
@@ -105,10 +109,20 @@ public class Character {
 	}
 
 	private void determineSavingThrows() {
-		for (var abilityAndScore : this.abilitiesScore.entrySet()) {
-			Ability ability = abilityAndScore.getKey();
-			Integer score = abilityAndScore.getValue();
-			savingThrow.put(ability, Ability.getModifier(score) + proficiencyBonus);
+		for (var savingThrowProficiency : SavingThrowProficiency.values()) {
+			Ability ability = Ability.valueOf(savingThrowProficiency.name());
+			Integer abilityScore = this.abilitiesScore.get(ability);
+
+			Set<SavingThrowProficiency> characterSavingThrowProficiency = this.characterClass
+					.getSavingThrowProficiencies();
+
+			Integer savingThrowModifier = Ability.getModifier(abilityScore);
+
+			if (characterSavingThrowProficiency.contains(savingThrowProficiency)) {
+				savingThrowModifier += this.proficiencyBonus;
+			}
+
+			savingThrow.put(savingThrowProficiency, savingThrowModifier);
 		}
 	}
 
